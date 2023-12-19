@@ -1,4 +1,5 @@
 import 'package:book_lent_manager/dto/user_dto.dart';
+import 'package:intl/intl.dart';
 
 class User {
   int id;
@@ -8,6 +9,8 @@ class User {
   String address;
   String phoneNumber;
   DateTime createdAt;
+  final DateFormat createdAtFormatter = DateFormat('yyyy-MM-dd HH:mm:ss');
+  final DateFormat birthdayFormatter = DateFormat('yyyy-MM-dd');
 
 //<editor-fold desc="Data Methods">
   User({
@@ -58,10 +61,10 @@ class User {
       'id': id,
       'name': name,
       'gender': gender,
-      'birthday': birthday,
+      'birthday': birthdayFormatter.format(birthday),
       'address': address,
       'phoneNumber': phoneNumber,
-      'createdAt': createdAt,
+      'createdAt': createdAtFormatter.format(createdAt),
     };
   }
 
@@ -82,10 +85,10 @@ class User {
       id: json['id'] as int,
       name: json['name'] as String,
       gender: json['gender'] as int,
-      birthday: json['birthday'] as DateTime,
+      birthday: DateTime.parse(json['birthday'] as String),
       address: json['address'] as String,
       phoneNumber: json['phoneNumber'] as String,
-      createdAt: json['createdAt'] as DateTime,
+      createdAt: DateTime.parse(json['createdAt'] as String),
     );
   }
 //</editor-fold>

@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class UserDto {
   int id;
   String? name;
@@ -6,6 +8,8 @@ class UserDto {
   String? address;
   String? phoneNumber;
   DateTime? createdAt;
+  final DateFormat createdAtFormatter = DateFormat('yyyy-MM-dd HH:mm:ss');
+  final DateFormat birthdayFormatter = DateFormat('yyyy-MM-dd');
 
 //<editor-fold desc="Data Methods">
   UserDto({
@@ -36,10 +40,10 @@ class UserDto {
       'id': id,
       'name': name,
       'gender': gender,
-      'birthday': birthday,
+      'birthday': birthday != null ? birthdayFormatter.format(birthday!) : null,
       'address': address,
       'phoneNumber': phoneNumber,
-      'createdAt': createdAt,
+      'createdAt': createdAt != null ? createdAtFormatter.format(createdAt!) : null,
     };
   }
 
@@ -48,10 +52,10 @@ class UserDto {
       id: map['id'] as int,
       name: map['name'] as String,
       gender: map['gender'] as int,
-      birthday: map['birthday'] as DateTime,
+      birthday: DateTime.parse(map['birthday']),
       address: map['address'] as String,
       phoneNumber: map['phoneNumber'] as String,
-      createdAt: map['createdAt'] as DateTime,
+      createdAt: DateTime.parse(map['createdAt']),
     );
   }
 
