@@ -1,5 +1,5 @@
 class UserDto {
-  int? id;
+  int id;
   String? name;
   int? gender;
   DateTime? birthday;
@@ -7,8 +7,9 @@ class UserDto {
   String? phoneNumber;
   DateTime? createdAt;
 
+//<editor-fold desc="Data Methods">
   UserDto({
-    this.id,
+    required this.id,
     this.name,
     this.gender,
     this.birthday,
@@ -17,25 +18,42 @@ class UserDto {
     this.createdAt,
   });
 
-  UserDto.fromJson(dynamic json) {
-    id = json['id'];
-    name = json['name'];
-    gender = json['gender'];
-    birthday = json['birthday'];
-    address = json['address'];
-    phoneNumber = json['phoneNumber'];
-    createdAt = json['createdAt'];
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is UserDto && runtimeType == other.runtimeType && id == other.id);
+
+  @override
+  int get hashCode => id.hashCode;
+
+  @override
+  String toString() {
+    return 'UserDto{ id: $id, name: $name, gender: $gender, birthday: $birthday, address: $address, phoneNumber: $phoneNumber, createdAt: $createdAt,}';
   }
 
   Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['name'] = name;
-    map['gender'] = gender;
-    map['birthday'] = birthday;
-    map['address'] = address;
-    map['phoneNumber'] = phoneNumber;
-    map['createdAt'] = createdAt;
-    return map;
+    return {
+      'id': id,
+      'name': name,
+      'gender': gender,
+      'birthday': birthday,
+      'address': address,
+      'phoneNumber': phoneNumber,
+      'createdAt': createdAt,
+    };
   }
+
+  factory UserDto.fromJson(Map<String, dynamic> map) {
+    return UserDto(
+      id: map['id'] as int,
+      name: map['name'] as String,
+      gender: map['gender'] as int,
+      birthday: map['birthday'] as DateTime,
+      address: map['address'] as String,
+      phoneNumber: map['phoneNumber'] as String,
+      createdAt: map['createdAt'] as DateTime,
+    );
+  }
+
+//</editor-fold>
 }
