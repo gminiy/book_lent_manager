@@ -65,9 +65,9 @@ class User {
     };
   }
 
-  UserDto toUserDto(User user) {
+  UserDto toUserDto() {
     return UserDto(
-      id: user.id,
+      id: id,
       name: name,
       gender: gender,
       birthday: birthday,
