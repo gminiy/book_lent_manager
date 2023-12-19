@@ -31,8 +31,6 @@ void main() async {
 
   SharedPreferences.setMockInitialValues({'user': mockUserList});
 
-  final SharedPreferences prefs = await SharedPreferences.getInstance();
-
   UserRepository userRepository = UserRepository();
 
   test('should return all users', () async {
