@@ -46,7 +46,6 @@ void main() {
   });
 
   test('book with null fromJson', () {
-    //Todo: id 만 같으면 같은 객체로 판단하도록 만들었는데 다른 프로퍼티들이 같은지는 어떻게 테스트할까.
     Book book = Book.fromJson({
       'id': 0,
       'name': 'book',
@@ -56,11 +55,10 @@ void main() {
       'rentedAt': null,
     });
 
-    expect(book, rentedBook);
+    expect(book.toJson(), notRentedBook.toJson());
   });
 
   test('rented book fromJson', () {
-    //Todo: id 만 같으면 같은 객체로 판단하도록 만들었는데 다른 프로퍼티들이 같은지는 어떻게 테스트할까.
     Book book = Book.fromJson({
       'id': 0,
       'name': 'book',
@@ -70,6 +68,6 @@ void main() {
       'rentedAt': DateTime(0).toString(),
     });
 
-    expect(book, rentedBook);
+    expect(book.toJson(), rentedBook.toJson());
   });
 }
