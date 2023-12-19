@@ -1,3 +1,5 @@
+import 'package:book_lent_manager/dto/book_dto.dart';
+
 class Book {
   int id;
   String name;
@@ -58,6 +60,16 @@ class Book {
     };
   }
 
+  BookDto toBookDto() {
+    return BookDto(
+      id: id,
+      name: name,
+      isRented: isRented,
+      rentedUserId: rentedUserId,
+      publishedDate: publishedDate,
+      rentedAt: rentedAt,
+    );
+  }
   factory Book.fromJson(Map<String, dynamic> json) {
     return Book(
       id: json['id'] as int,
