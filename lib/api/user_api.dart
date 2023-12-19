@@ -7,7 +7,7 @@ class UserApi {
     return SharedPreferences.getInstance();
   }
 
-  Future<List<UserDto>> _getUsersFromPrefs() async {
+  Future<List<UserDto>> _getAllUsersFromPrefs() async {
     final prefs = await _getPrefs();
     final userJsonList = prefs.getStringList('user');
 
@@ -21,7 +21,7 @@ class UserApi {
   }
 
   Future<UserDto?> getUser(int id) async {
-    final List<UserDto> users = await _getUsersFromPrefs();
+    final List<UserDto> users = await _getAllUsersFromPrefs();
 
     for (UserDto user in users) {
       if (user.id == id) {
@@ -32,7 +32,7 @@ class UserApi {
     return null;
   }
 
-  Future<List<UserDto>> getUserAll() async {
-    return await _getUsersFromPrefs();
+  Future<List<UserDto>> getAllUsers() async {
+    return await _getAllUsersFromPrefs();
   }
 }
