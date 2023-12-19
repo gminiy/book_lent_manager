@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:book_lent_manager/model/user.dart';
 import 'package:book_lent_manager/repository/user_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -26,10 +25,10 @@ void main() async {
       createdAt: DateTime.now(),
     )
   ];
-  List<String> mockUserList =
+  List<String> mockUserJsonList =
       mockUsers.map((mockUser) => jsonEncode(mockUser.toJson())).toList();
 
-  SharedPreferences.setMockInitialValues({'user': mockUserList});
+  SharedPreferences.setMockInitialValues({'user': mockUserJsonList});
 
   UserRepository userRepository = UserRepository();
 

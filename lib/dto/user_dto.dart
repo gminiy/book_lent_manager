@@ -1,5 +1,4 @@
 import 'package:book_lent_manager/util/date_time_formatter.dart';
-import 'package:intl/intl.dart';
 
 class UserDto {
   int id;
@@ -9,8 +8,6 @@ class UserDto {
   String? address;
   String? phoneNumber;
   DateTime? createdAt;
-  final DateFormat createdAtFormatter = DateFormat('yyyy-MM-dd HH:mm:ss');
-  final DateFormat birthdayFormatter = DateFormat('yyyy-MM-dd');
 
 //<editor-fold desc="Data Methods">
   UserDto({
