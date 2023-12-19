@@ -1,11 +1,11 @@
 class UserDto {
-  num? id;
+  int? id;
   String? name;
-  num? gender;
-  String? birthday;
+  int? gender;
+  DateTime? birthday;
   String? address;
   String? phoneNumber;
-  String? createdAt;
+  DateTime? createdAt;
 
   UserDto({
     this.id,
