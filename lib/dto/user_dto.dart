@@ -1,3 +1,4 @@
+import 'package:book_lent_manager/util/date_time_formatter.dart';
 import 'package:intl/intl.dart';
 
 class UserDto {
@@ -40,22 +41,25 @@ class UserDto {
       'id': id,
       'name': name,
       'gender': gender,
-      'birthday': birthday != null ? birthdayFormatter.format(birthday!) : null,
+      'birthday': birthday != null ? dateFormatter.format(birthday!) : null,
       'address': address,
       'phoneNumber': phoneNumber,
-      'createdAt': createdAt != null ? createdAtFormatter.format(createdAt!) : null,
+      'createdAt':
+          createdAt != null ? dateTimeFormatter.format(createdAt!) : null,
     };
   }
 
-  factory UserDto.fromJson(Map<String, dynamic> map) {
+  factory UserDto.fromJson(Map<String, dynamic> json) {
     return UserDto(
-      id: map['id'] as int,
-      name: map['name'] as String,
-      gender: map['gender'] as int,
-      birthday: DateTime.parse(map['birthday']),
-      address: map['address'] as String,
-      phoneNumber: map['phoneNumber'] as String,
-      createdAt: DateTime.parse(map['createdAt']),
+      id: json['id'] as int,
+      name: json['name'],
+      gender: json['gender'],
+      birthday:
+          json['birthday'] != null ? DateTime.parse(json['birthday']) : null,
+      address: json['address'],
+      phoneNumber: json['phoneNumber'],
+      createdAt:
+          json['createdAt'] != null ? DateTime.parse(json['createdAt']) : null,
     );
   }
 
