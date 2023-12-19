@@ -51,7 +51,7 @@ class User {
     );
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return {
       'id': id,
       'name': name,
@@ -63,15 +63,15 @@ class User {
     };
   }
 
-  factory User.fromMap(Map<String, dynamic> map) {
+  factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      id: map['id'] as int,
-      name: map['name'] as String,
-      gender: map['gender'] as int,
-      birthday: map['birthday'] as DateTime,
-      address: map['address'] as String,
-      phoneNumber: map['phoneNumber'] as String,
-      createdAt: map['createdAt'] as DateTime,
+      id: json['id'] as int,
+      name: json['name'] as String,
+      gender: json['gender'] as int,
+      birthday: json['birthday'] as DateTime,
+      address: json['address'] as String,
+      phoneNumber: json['phoneNumber'] as String,
+      createdAt: json['createdAt'] as DateTime,
     );
   }
 //</editor-fold>
