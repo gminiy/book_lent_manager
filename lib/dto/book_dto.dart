@@ -67,7 +67,7 @@ class BookDto {
       name: json['name'],
       isRented: json['isRented'],
       rentedUserId: json['rentedUserId'],
-      publishedDate: json['rentedUserId'] != null
+      publishedDate: json['publishedDate'] != null
           ? DateTime.parse(json['publishedDate'] as String)
           : null,
       rentedAt: json['rentedAt'] != null
