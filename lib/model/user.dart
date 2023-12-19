@@ -1,3 +1,5 @@
+import 'package:book_lent_manager/dto/user_dto.dart';
+
 class User {
   int id;
   String name;
@@ -61,6 +63,18 @@ class User {
       'phoneNumber': phoneNumber,
       'createdAt': createdAt,
     };
+  }
+
+  UserDto toUserDto(User user) {
+    return UserDto(
+      id: user.id,
+      name: name,
+      gender: gender,
+      birthday: birthday,
+      address: address,
+      phoneNumber: phoneNumber,
+      createdAt: createdAt,
+    );
   }
 
   factory User.fromJson(Map<String, dynamic> json) {
