@@ -6,15 +6,16 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
-  final List<User> mockUsers = [User(
-    id: 0,
-    name: 'name',
-    gender: 1,
-    birthday: DateTime.now(),
-    address: 'address',
-    phoneNumber: '010-0000-0000',
-    createdAt: DateTime.now(),
-  ),
+  final List<User> mockUsers = [
+    User(
+      id: 0,
+      name: 'name',
+      gender: 1,
+      birthday: DateTime.now(),
+      address: 'address',
+      phoneNumber: '010-0000-0000',
+      createdAt: DateTime.now(),
+    ),
     User(
       id: 1,
       name: 'name1',
@@ -25,8 +26,8 @@ void main() async {
       createdAt: DateTime.now(),
     )
   ];
-  List<String> mockUserList = mockUsers.map((mockUser) =>
-      jsonEncode(mockUser.toJson())).toList();
+  List<String> mockUserList =
+      mockUsers.map((mockUser) => jsonEncode(mockUser.toJson())).toList();
 
   SharedPreferences.setMockInitialValues({'user': mockUserList});
 
@@ -37,5 +38,10 @@ void main() async {
   test('should return all users', () async {
     List<User> allUsers = await userRepository.getAllUsers();
     expect(allUsers, mockUsers);
+  });
+
+  test('should return user with Id', () async {
+    User? user = await userRepository.getUser(0);
+    expect(user, mockUsers[0]);
   });
 }
