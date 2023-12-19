@@ -1,4 +1,5 @@
 import 'package:book_lent_manager/dto/book_dto.dart';
+import 'package:book_lent_manager/util/date_time_formatter.dart';
 
 class Book {
   int id;
@@ -55,8 +56,8 @@ class Book {
       'name': name,
       'isRented': isRented,
       'rentedUserId': rentedUserId,
-      'publishedDate': publishedDate,
-      'rentedAt': rentedAt,
+      'publishedDate': dateFormatter.format(publishedDate),
+      'rentedAt': rentedAt != null ? dateTimeFormatter.format(rentedAt!) : null,
     };
   }
 
