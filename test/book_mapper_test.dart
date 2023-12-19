@@ -1,6 +1,7 @@
 import 'package:book_lent_manager/dto/book_dto.dart';
 import 'package:book_lent_manager/model/book.dart';
 import 'package:book_lent_manager/mapper/book_mapper.dart';
+import 'package:book_lent_manager/util/date_time_formatter.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -11,7 +12,7 @@ void main() {
       'name': '이름 없음',
       'isRented': false,
       'rentedUserId': null,
-      'publishedDate': DateTime(0),
+      'publishedDate': dateFormatter.format(DateTime(0)),
       'rentedAt': null,
     };
     expect(book.toJson(), expectBookJson);

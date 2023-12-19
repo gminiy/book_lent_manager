@@ -1,4 +1,5 @@
 import 'package:book_lent_manager/model/book.dart';
+import 'package:book_lent_manager/util/date_time_formatter.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -25,7 +26,7 @@ void main() {
       'name': 'book',
       'isRented': false,
       'rentedUserId': null,
-      'publishedDate': DateTime(0),
+      'publishedDate': dateFormatter.format(DateTime(0)),
       'rentedAt': null,
     };
 
@@ -38,8 +39,8 @@ void main() {
       'name': 'book',
       'isRented': true,
       'rentedUserId': 0,
-      'publishedDate': DateTime(0),
-      'rentedAt': DateTime(0),
+      'publishedDate': dateFormatter.format(DateTime(0)),
+      'rentedAt': dateTimeFormatter.format(DateTime(0)),
     };
 
     expect(rentedBook.toJson(), expectBookDtoJson);
@@ -51,7 +52,7 @@ void main() {
       'name': 'book',
       'isRented': false,
       'rentedUserId': null,
-      'publishedDate': DateTime(0).toString(),
+      'publishedDate': dateFormatter.format(DateTime(0)),
       'rentedAt': null,
     });
 
@@ -64,8 +65,8 @@ void main() {
       'name': 'book',
       'isRented': true,
       'rentedUserId': 0,
-      'publishedDate': DateTime(0).toString(),
-      'rentedAt': DateTime(0).toString(),
+      'publishedDate': dateFormatter.format(DateTime(0)),
+      'rentedAt': dateTimeFormatter.format(DateTime(0)),
     });
 
     expect(book.toJson(), rentedBook.toJson());
