@@ -44,4 +44,21 @@ void main() async {
     User? user = await userRepository.getUser(0);
     expect(user, mockUsers[0]);
   });
+
+  test('add user', () async {
+    User newUser = User(
+      id: 2,
+      name: 'name2',
+      gender: 1,
+      birthday: DateTime.now(),
+      address: 'address2',
+      phoneNumber: '010-2222-2222',
+      createdAt: DateTime.now(),
+    );
+
+    await userRepository.addUser(newUser);
+    mockUsers.add(newUser);
+    List<User> allUsers = await userRepository.getAllUsers();
+    expect(allUsers, mockUsers);
+  });
 }
